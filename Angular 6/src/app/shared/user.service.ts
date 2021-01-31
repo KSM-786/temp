@@ -32,6 +32,13 @@ export class UserService {
     return this.http.get(environment.apiBaseUrl + '/userProfile');
   }
 
+  details() {
+    return this.http.get('http://dummy.restapiexample.com/api/v1/employees');
+  }
+
+  onDetails() {
+    return this.http.get('http://dummy.restapiexample.com/api/v1/employees/${id}');
+  }
 
   //Helper Methods
 

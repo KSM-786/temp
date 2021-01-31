@@ -9,6 +9,8 @@ import { Router } from "@angular/router";
 })
 export class UserProfileComponent implements OnInit {
   userDetails;
+  li:any; 
+  lis=[];
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
@@ -21,7 +23,29 @@ export class UserProfileComponent implements OnInit {
         
       }
     );
+    this.userService.details().subscribe(
+      res => {
+      console.log(res);
+      this.li=res; 
+      this.lis=this.li.data;
+
+      },
+      err => { 
+        console.log(err);
+      }
+    );
+    this.userService.onDetails().subscribe(
+      res => {
+      console.log(res);
+      this.li=res; 
+      this.lis=this.li.data;
+      },
+      err => { 
+        console.log(err);
+      }
+    );
   }
+
 
   onLogout(){
     this.userService.deleteToken();
